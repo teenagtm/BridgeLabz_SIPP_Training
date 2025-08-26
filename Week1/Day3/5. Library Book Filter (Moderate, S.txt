@@ -1,0 +1,13 @@
+5. Library Book Filter (Moderate, Streams + Lambda)
+CLASS Book
+    ATTRIBUTE: title
+    ATTRIBUTE: year
+    ATTRIBUTE: rating
+
+MAIN
+    CREATE books = list of Book objects
+
+    filteredBooks = FILTER books WHERE year > 2015 AND rating > 4.5
+
+    FOR EACH book IN filteredBooks
+        PRINT book.title, book.year, book.rating

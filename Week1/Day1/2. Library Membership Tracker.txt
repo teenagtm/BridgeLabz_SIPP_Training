@@ -1,0 +1,14 @@
+2. Library Membership Tracker
+CLASS Member
+    ATTRIBUTES: name, id, membershipDate
+    METHOD isMembershipValid()
+        today = current date
+        duration = difference in years between today and membershipDate
+        IF duration < 1 THEN
+            RETURN true
+        ELSE
+            RETURN false
+
+MAIN
+    CREATE member1 = Member("Alice", 101, "2024-09-01")
+    PRINT member1.name + " valid? " + CALL member1.isMembershipValid()

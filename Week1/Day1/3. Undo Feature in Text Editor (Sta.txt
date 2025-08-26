@@ -1,0 +1,26 @@
+3. Undo Feature in Text Editor (Stack)
+CLASS TextEditor
+    ATTRIBUTE: historyStack
+    ATTRIBUTE: text
+
+    METHOD write(newText)
+        PUSH current text into historyStack
+        text = newText
+
+    METHOD undo()
+        IF historyStack is not empty THEN
+            text = POP from historyStack
+        ELSE
+            PRINT "Nothing to undo!"
+
+    METHOD display()
+        PRINT text
+
+MAIN
+    CREATE editor = TextEditor
+    CALL editor.write("Hello")
+    CALL editor.display()
+    CALL editor.write("Hello World")
+    CALL editor.display()
+    CALL editor.undo()
+    CALL editor.display()

@@ -1,0 +1,16 @@
+3. Online Quiz Timer (Easy, Circular Array)
+CLASS QuizTimer
+    ATTRIBUTE: timeSlots[]  // circular array
+    ATTRIBUTE: totalQuestions
+    ATTRIBUTE: currentTime
+
+    METHOD startTimer()
+        FOR each question from 1 to totalQuestions
+            FOR each second in timeSlots[question]
+                currentTime += 1
+                IF currentTime near end of slot THEN
+                    PRINT "Warning: Time almost over for question " + question
+
+MAIN
+    CREATE quizTimer = QuizTimer
+    CALL quizTimer.startTimer()

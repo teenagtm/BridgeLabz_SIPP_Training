@@ -1,0 +1,27 @@
+3. Distributed Load Balancer – Queue Simulation (Difficult)
+CLASS Server
+    ATTRIBUTE: name
+
+MAIN
+    CREATE serverQueue = empty queue
+    ENQUEUE Server("S1"), Server("S2"), Server("S3")
+
+    FUNCTION processRequest(request)
+        server = DEQUEUE serverQueue
+        PRINT request + " -> " + server.name
+        ENQUEUE serverQueue, server
+
+    // Process requests
+    CALL processRequest("R1")
+    CALL processRequest("R2")
+    CALL processRequest("R3")
+
+    // Add new server dynamically
+    ENQUEUE serverQueue, Server("S4")
+
+    // Continue processing
+    CALL processRequest("R4")
+    CALL processRequest("R5")
+
+    // Remove server if offline
+    REMOVE Server("S2") from serverQueue

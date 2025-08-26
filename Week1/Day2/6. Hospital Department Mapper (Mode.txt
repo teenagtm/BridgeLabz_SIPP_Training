@@ -1,0 +1,14 @@
+6. Hospital Department Mapper (Moderate, Map + List)
+CLASS Doctor
+    ATTRIBUTE: name
+    ATTRIBUTE: specialization
+
+MAIN
+    CREATE deptMap = empty map (key=department, value=list of doctors)
+
+    ADD Doctor("Dr. A", "Cardiology") to deptMap["Cardiology"]
+    ADD Doctor("Dr. B", "Neurology") to deptMap["Neurology"]
+    ADD Doctor("Dr. C", "Cardiology") to deptMap["Cardiology"]
+
+    FOR EACH doctor IN deptMap["Cardiology"]
+        PRINT doctor.name + " - " + doctor.specialization

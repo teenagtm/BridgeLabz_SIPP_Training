@@ -1,0 +1,30 @@
+2. Vehicle Rental System (Difficult, Abstract + Interface + Factory Pattern)
+INTERFACE Rentable
+    METHOD rent()
+    METHOD returnVehicle()
+
+ABSTRACT CLASS Vehicle
+    ATTRIBUTE: vehicleNumber
+    ATTRIBUTE: rentPrice
+
+CLASS Car EXTENDS Vehicle IMPLEMENTS Rentable
+    METHOD rent()
+        PRINT "Car rented"
+    METHOD returnVehicle()
+        PRINT "Car returned"
+
+CLASS Bike EXTENDS Vehicle IMPLEMENTS Rentable
+    METHOD rent()
+        PRINT "Bike rented"
+    METHOD returnVehicle()
+        PRINT "Bike returned"
+
+CLASS VehicleFactory
+    METHOD createVehicle(type)
+        IF type == "Car" THEN RETURN new Car
+        ELSE IF type == "Bike" THEN RETURN new Bike
+
+MAIN
+    CREATE vehicle1 = VehicleFactory.createVehicle("Car")
+    CALL vehicle1.rent()
+    CALL vehicle1.returnVehicle()

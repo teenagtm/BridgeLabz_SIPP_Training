@@ -1,0 +1,20 @@
+5. College Course Registration (Moderate, Map + List / MultiMap)
+CLASS Student
+    ATTRIBUTE: name
+    ATTRIBUTE: id
+
+CLASS Course
+    ATTRIBUTE: courseName
+    ATTRIBUTE: code
+
+MAIN
+    CREATE courseMap = empty map<Course, List<Student>>
+
+    ADD Student("Alice", 101) to courseMap[Course("Math", "M101")]
+    ADD Student("Bob", 102) to courseMap[Course("Math", "M101")]
+    ADD Student("Charlie", 103) to courseMap[Course("Physics", "P101")]
+
+    FOR EACH course IN courseMap
+        PRINT "Course: " + course.courseName
+        FOR EACH student IN courseMap[course]
+            PRINT student.name

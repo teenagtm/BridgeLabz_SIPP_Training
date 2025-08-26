@@ -1,0 +1,22 @@
+5. Online Store Cart System (Easy, List + Generic)
+CLASS Item
+    ATTRIBUTE: name
+    ATTRIBUTE: price
+
+CLASS ShoppingCart<T extends Item>
+    ATTRIBUTE: cartList = empty list
+
+    METHOD addItem(item)
+        ADD item to cartList
+
+    METHOD calculateTotal()
+        total = 0
+        FOR EACH item IN cartList
+            total += item.price
+        RETURN total
+
+MAIN
+    CREATE cart = ShoppingCart
+    ADD Item("Laptop", 50000) to cart
+    ADD Item("Mouse", 500) to cart
+    PRINT "Total Price: " + CALL cart.calculateTotal()

@@ -1,0 +1,24 @@
+1. Traffic Signal Simulation (Easy, Java OOP + Enum)
+ENUM TrafficLight
+    RED, GREEN, YELLOW
+
+CLASS TrafficSignal
+    ATTRIBUTE: currentLight
+
+    METHOD switchLight()
+        IF currentLight == RED THEN
+            currentLight = GREEN
+        ELSE IF currentLight == GREEN THEN
+            currentLight = YELLOW
+        ELSE
+            currentLight = RED
+
+    METHOD displayLight()
+        PRINT "Current Light: " + currentLight
+
+MAIN
+    CREATE signal = TrafficSignal
+    LOOP forever
+        CALL signal.displayLight()
+        WAIT for time interval
+        CALL signal.switchLight()

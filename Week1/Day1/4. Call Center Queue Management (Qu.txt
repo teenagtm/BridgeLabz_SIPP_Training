@@ -1,0 +1,13 @@
+4. Call Center Queue Management (Queue)
+CLASS Customer
+    ATTRIBUTES: name, priority  // priority = "normal" or "emergency"
+
+MAIN
+    CREATE queue = empty queue
+    ADD Customer("Alice", "normal") to queue
+    ADD Customer("Bob", "emergency") to queue
+    ADD Customer("Charlie", "normal") to queue
+
+    WHILE queue is not empty
+        customer = REMOVE from queue with highest priority
+        PRINT "Serving customer: " + customer.name

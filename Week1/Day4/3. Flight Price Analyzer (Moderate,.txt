@@ -1,0 +1,19 @@
+3. Flight Price Analyzer (Moderate, Custom Sort + Merge Sort)
+CLASS Flight
+    ATTRIBUTE: flightNumber
+    ATTRIBUTE: price
+    ATTRIBUTE: duration
+
+FUNCTION mergeSortFlights(flights)
+    IF flights.size <= 1 THEN RETURN flights
+    SPLIT flights into left and right
+    CALL mergeSortFlights(left)
+    CALL mergeSortFlights(right)
+    RETURN merge(left, right) using comparator:
+        SORT BY price ASCENDING
+        IF price equal THEN SORT BY duration ASCENDING
+
+MAIN
+    CREATE flights = list of Flight objects
+    sortedFlights = CALL mergeSortFlights(flights)
+    PRINT sortedFlights

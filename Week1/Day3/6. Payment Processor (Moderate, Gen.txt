@@ -1,0 +1,17 @@
+6. Payment Processor (Moderate, Generic Transaction)
+CLASS Transaction<T>
+    ATTRIBUTE: transactionID
+    ATTRIBUTE: amount
+    ATTRIBUTE: paymentMethod of type T
+
+    METHOD process()
+        PRINT "Processing " + paymentMethod + " transaction of " + amount
+
+MAIN
+    CREATE t1 = Transaction<UPI>(101, 500, "UPI")
+    CREATE t2 = Transaction<Card>(102, 1000, "Card")
+    CREATE t3 = Transaction<NetBanking>(103, 1500, "NetBanking")
+
+    CALL t1.process()
+    CALL t2.process()
+    CALL t3.process()

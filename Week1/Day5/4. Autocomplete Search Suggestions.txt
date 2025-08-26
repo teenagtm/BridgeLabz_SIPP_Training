@@ -1,0 +1,34 @@
+4. Autocomplete Search Suggestions – Trie (Difficult)
+CLASS TrieNode
+    ATTRIBUTE: children  // map<char, TrieNode>
+    ATTRIBUTE: isEndOfWord
+    ATTRIBUTE: popularity
+
+CLASS Trie
+    ATTRIBUTE: root
+
+    METHOD insert(keyword)
+        node = root
+        FOR EACH char IN keyword
+            IF char not in node.children THEN
+                node.children[char] = new TrieNode
+            node = node.children[char]
+        node.isEndOfWord = true
+        node.popularity = 0
+
+    METHOD updatePopularity(keyword)
+        node = traverse to end of keyword
+        node.popularity += 1
+
+    METHOD search(prefix, topN)
+        node = traverse to end of prefix
+        results = collect all words from node
+        SORT results by popularity DESC
+        RETURN first topN words
+
+MAIN
+    CREATE trie = Trie
+    INSERT "pizza hut", "pizza point", "pita bread", "pizzeria"
+    CALL trie.search("pi", 3)
+    CALL trie.updatePopularity("pita bread")
+    INSERT "pineapple cafe"

@@ -1,0 +1,32 @@
+1. Healthcare Diagnosis Engine (Difficult, Strategy Pattern)
+INTERFACE DiagnosisStrategy
+    METHOD diagnose(symptoms)
+
+CLASS RuleBasedDiagnosis IMPLEMENTS DiagnosisStrategy
+    METHOD diagnose(symptoms)
+        PRINT "Rule-based diagnosis applied on " + symptoms
+
+CLASS AIBasedDiagnosis IMPLEMENTS DiagnosisStrategy
+    METHOD diagnose(symptoms)
+        PRINT "AI-based diagnosis applied on " + symptoms
+
+CLASS ProbabilityBasedDiagnosis IMPLEMENTS DiagnosisStrategy
+    METHOD diagnose(symptoms)
+        PRINT "Probability-based diagnosis applied on " + symptoms
+
+CLASS DiagnosisContext
+    ATTRIBUTE strategy of type DiagnosisStrategy
+    METHOD setStrategy(newStrategy)
+        strategy = newStrategy
+    METHOD diagnosePatient(symptoms)
+        CALL strategy.diagnose(symptoms)
+
+MAIN
+    CREATE context = DiagnosisContext
+    // Patient 1
+    CALL context.setStrategy(RuleBasedDiagnosis)
+    CALL context.diagnosePatient(["fever","cough","fatigue"])
+    // Patient 2
+    CALL context.setStrategy(AIBasedDiagnosis)
+    CALL context.diagnosePatient(["headache","dizziness","nausea"])
+    // Add new GeneticPatternDiagnosis later without changing old code

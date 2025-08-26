@@ -1,0 +1,26 @@
+2. Medical Record Manager (Moderate, Interface + Polymorphism)
+INTERFACE Searchable
+    METHOD search(recordID)
+
+INTERFACE Printable
+    METHOD printReport()
+
+CLASS BloodReport IMPLEMENTS Searchable, Printable
+    METHOD search(recordID)
+        PRINT "Searching Blood Report " + recordID
+    METHOD printReport()
+        PRINT "Printing Blood Report"
+
+CLASS XRayReport IMPLEMENTS Searchable, Printable
+    METHOD search(recordID)
+        PRINT "Searching XRay Report " + recordID
+    METHOD printReport()
+        PRINT "Printing XRay Report"
+
+MAIN
+    CREATE report1 = BloodReport
+    CREATE report2 = XRayReport
+    CALL report1.search(101)
+    CALL report1.printReport()
+    CALL report2.search(102)
+    CALL report2.printReport()

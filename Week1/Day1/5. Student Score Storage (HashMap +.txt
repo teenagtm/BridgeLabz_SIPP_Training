@@ -1,0 +1,10 @@
+5. Student Score Storage (HashMap + Streams)
+MAIN
+    CREATE scores = empty map
+    ADD ("Alice", 85) to scores
+    ADD ("Bob", 92) to scores
+    ADD ("Charlie", 78) to scores
+
+    highestScore = max value in scores
+    highestScorer = key(s) corresponding to highestScore
+    PRINT "Highest scorer: " + highestScorer + ", Score: " + highestScore

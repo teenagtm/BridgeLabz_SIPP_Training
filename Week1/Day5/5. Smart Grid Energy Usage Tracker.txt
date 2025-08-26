@@ -1,0 +1,13 @@
+5. Smart Grid Energy Usage Tracker (Difficult, Nested Map + Streams)
+CLASS Reading
+    ATTRIBUTE: meterID
+    ATTRIBUTE: consumption
+
+MAIN
+    CREATE energyData = Map<Zone, Map<Day, List<Reading>>>
+
+    FOR EACH zone IN energyData
+        FOR EACH day IN energyData[zone]
+            readings = energyData[zone][day]
+            peak = MAX(reading.consumption FOR reading IN readings)
+            PRINT zone + ", " + day + " -> Peak Load: " + peak

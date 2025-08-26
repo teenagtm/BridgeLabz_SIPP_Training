@@ -1,0 +1,15 @@
+4. Job Scheduler (Moderate, Priority Queue)
+CLASS Job
+    ATTRIBUTE: name
+    ATTRIBUTE: deadline
+    ATTRIBUTE: processingTime
+
+MAIN
+    CREATE jobQueue = empty priority queue (sorted by deadline)
+    ADD Job("Job1", 5, 2) to jobQueue
+    ADD Job("Job2", 3, 1) to jobQueue
+    ADD Job("Job3", 7, 4) to jobQueue
+
+    WHILE jobQueue is not empty
+        job = REMOVE job with earliest deadline
+        PRINT "Processing " + job.name + " for " + job.processingTime + " units"

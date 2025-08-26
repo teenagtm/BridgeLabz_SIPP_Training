@@ -1,0 +1,21 @@
+4. Crime Prediction Heatmap (Difficult, Graph + DFS)
+CLASS Zone
+    ATTRIBUTE: zoneID
+    ATTRIBUTE: crimeRate
+
+CLASS CityGraph
+    ATTRIBUTE: adjacencyList  // zones connected
+    METHOD DFS(zone, visited)
+        MARK zone as visited
+        IF zone.crimeRate > threshold THEN
+            PRINT "High risk zone: " + zone.zoneID
+        FOR each neighbor IN adjacencyList[zone]
+            IF neighbor not visited THEN
+                CALL DFS(neighbor, visited)
+
+MAIN
+    CREATE cityGraph with zones and edges
+    CREATE visitedList
+    FOR EACH zone in cityGraph
+        IF zone not visited THEN
+            CALL DFS(zone, visitedList)

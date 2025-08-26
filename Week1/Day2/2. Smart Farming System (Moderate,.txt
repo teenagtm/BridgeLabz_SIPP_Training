@@ -1,0 +1,25 @@
+2. Smart Farming System (Moderate, Abstract Class)
+ABSTRACT CLASS Crop
+    ATTRIBUTE: name
+    METHOD waterRequirement()  // abstract
+    METHOD harvest()           // abstract
+
+CLASS Rice EXTENDS Crop
+    METHOD waterRequirement()
+        PRINT "Rice needs 10 liters per day"
+    METHOD harvest()
+        PRINT "Harvesting Rice"
+
+CLASS Wheat EXTENDS Crop
+    METHOD waterRequirement()
+        PRINT "Wheat needs 5 liters per day"
+    METHOD harvest()
+        PRINT "Harvesting Wheat"
+
+MAIN
+    CREATE riceCrop = Rice
+    CREATE wheatCrop = Wheat
+    CALL riceCrop.waterRequirement()
+    CALL riceCrop.harvest()
+    CALL wheatCrop.waterRequirement()
+    CALL wheatCrop.harvest()

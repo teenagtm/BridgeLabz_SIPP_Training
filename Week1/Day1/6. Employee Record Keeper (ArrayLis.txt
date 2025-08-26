@@ -1,0 +1,13 @@
+6. Employee Record Keeper (ArrayList + Streams)
+CLASS Employee
+    ATTRIBUTES: name, department, salary
+
+MAIN
+    CREATE employees = empty list
+    ADD Employee("Alice", "IT", 50000) to employees
+    ADD Employee("Bob", "HR", 45000) to employees
+    ADD Employee("Charlie", "IT", 55000) to employees
+
+    FOR EACH employee IN employees
+        IF employee.department == "IT" THEN
+            PRINT employee.name + " - " + employee.salary

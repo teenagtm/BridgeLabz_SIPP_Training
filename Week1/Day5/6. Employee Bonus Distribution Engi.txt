@@ -1,0 +1,19 @@
+6. Employee Bonus Distribution Engine (Difficult, Streams + Map)
+CLASS Employee
+    ATTRIBUTE: name
+    ATTRIBUTE: department
+    ATTRIBUTE: rating
+    ATTRIBUTE: baseSalary
+
+MAIN
+    CREATE employees = list of Employee
+
+    GROUP employees BY department INTO deptMap
+
+    FOR EACH department IN deptMap
+        totalSalary = SUM(employee.baseSalary FOR employee IN deptMap[department])
+        bonusPool = 10% of totalSalary
+        totalRating = SUM(employee.rating FOR employee IN deptMap[department])
+        FOR EACH employee IN deptMap[department]
+            employeeBonus = (employee.rating / totalRating) * bonusPool
+            PRINT employee.name + " -> Bonus: " + employeeBonus

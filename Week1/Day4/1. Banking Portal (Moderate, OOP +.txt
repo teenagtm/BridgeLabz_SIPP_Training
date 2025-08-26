@@ -1,0 +1,26 @@
+1. Banking Portal (Moderate, OOP + Inheritance)
+CLASS Account
+    ATTRIBUTE: accountNumber
+    ATTRIBUTE: balance
+    METHOD deposit(amount)
+        balance += amount
+    METHOD withdraw(amount)
+        PRINT "Base withdraw not allowed"
+
+CLASS SavingAccount EXTENDS Account
+    METHOD withdraw(amount)
+        IF balance - amount >= 1000 THEN
+            balance -= amount
+        ELSE
+            PRINT "Insufficient balance for saving account"
+
+CLASS CurrentAccount EXTENDS Account
+    METHOD withdraw(amount)
+        balance -= amount
+        PRINT "Overdraft allowed"
+
+MAIN
+    CREATE sAcc = SavingAccount(101, 5000)
+    CREATE cAcc = CurrentAccount(102, 2000)
+    CALL sAcc.withdraw(4500)
+    CALL cAcc.withdraw(2500)

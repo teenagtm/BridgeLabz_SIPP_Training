@@ -1,0 +1,15 @@
+6. Digital Wallet Transactions Report (Difficult, Streams + Grouping)
+CLASS Transaction
+    ATTRIBUTE: transactionID
+    ATTRIBUTE: merchant
+    ATTRIBUTE: amount
+    ATTRIBUTE: month
+
+MAIN
+    CREATE transactions = list of Transaction objects
+
+    groupedReport = GROUP transactions BY merchant AND month
+    FOR EACH merchant IN groupedReport
+        FOR EACH month IN groupedReport[merchant]
+            totalAmount = SUM of amounts in groupedReport[merchant][month]
+            PRINT merchant + " Month: " + month + " Total: " + totalAmount

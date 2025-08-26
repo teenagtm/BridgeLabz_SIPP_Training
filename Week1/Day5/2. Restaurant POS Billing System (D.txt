@@ -1,0 +1,52 @@
+2. Restaurant POS Billing System (Difficult, Polymorphism + OOP)
+INTERFACE TaxCalculator
+    METHOD calculateTax(price)
+
+CLASS FoodTax IMPLEMENTS TaxCalculator
+    METHOD calculateTax(price)
+        RETURN price * 0.05
+
+CLASS BeverageTax IMPLEMENTS TaxCalculator
+    METHOD calculateTax(price)
+        RETURN price * 0.12
+
+CLASS ImportedTax EXTENDS FoodTax
+    METHOD calculateTax(price)
+        RETURN super.calculateTax(price) + customsDuty
+
+INTERFACE DiscountPolicy
+    METHOD applyDiscount(amount)
+
+CLASS NoDiscount IMPLEMENTS DiscountPolicy
+    METHOD applyDiscount(amount)
+        RETURN amount
+
+CLASS FlatDiscount IMPLEMENTS DiscountPolicy
+    ATTRIBUTE: flatAmount
+    METHOD applyDiscount(amount)
+        RETURN amount - flatAmount
+
+CLASS PercentageDiscount IMPLEMENTS DiscountPolicy
+    ATTRIBUTE: percentage
+    METHOD applyDiscount(amount)
+        RETURN amount - (amount * percentage / 100)
+
+CLASS Item
+    ATTRIBUTE: name
+    ATTRIBUTE: price
+    ATTRIBUTE: taxCalculator
+
+CLASS Bill
+    ATTRIBUTE: items
+    ATTRIBUTE: discountPolicy
+    METHOD calculateTotal()
+        total = 0
+        FOR EACH item IN items
+            total += item.price + item.taxCalculator.calculateTax(item.price)
+        RETURN discountPolicy.applyDiscount(total)
+
+MAIN
+    CREATE items = [PaneerTikka(FoodTax), Coke(BeverageTax), ImportedCheese(ImportedTax)]
+    CREATE bill = Bill(items, PercentageDiscount(10))
+    PRINT CALL bill.calculateTotal()
+    // Adding new tax/discount types can be done without changing existing code

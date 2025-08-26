@@ -1,0 +1,22 @@
+3. Patient Record Hashing (Moderate, HashMap)
+CLASS Patient
+    ATTRIBUTE: id
+    ATTRIBUTE: name
+    ATTRIBUTE: age
+
+MAIN
+    CREATE patientMap = empty HashMap
+
+    // Add patients
+    ADD Patient(101, "Alice", 30) to patientMap
+    ADD Patient(102, "Bob", 25) to patientMap
+
+    // Retrieve a patient
+    patient = GET patientMap[101]
+    PRINT patient.name
+
+    // Update patient
+    UPDATE patientMap[102].age = 26
+
+    // Delete patient
+    REMOVE patientMap[101]

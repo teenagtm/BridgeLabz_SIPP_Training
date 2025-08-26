@@ -1,0 +1,29 @@
+1. Food Delivery System (Moderate, Composition)
+CLASS Customer
+    ATTRIBUTE: name
+    ATTRIBUTE: address
+
+CLASS Restaurant
+    ATTRIBUTE: name
+    ATTRIBUTE: location
+
+CLASS DeliveryBoy
+    ATTRIBUTE: name
+    ATTRIBUTE: vehicle
+
+CLASS Order
+    ATTRIBUTE: customer
+    ATTRIBUTE: restaurant
+    ATTRIBUTE: deliveryBoy
+    ATTRIBUTE: orderDetails
+
+    METHOD displayOrder()
+        PRINT customer.name, restaurant.name, deliveryBoy.name
+        PRINT orderDetails
+
+MAIN
+    CREATE cust = Customer("Alice", "Street 1")
+    CREATE rest = Restaurant("Pizza Place", "Downtown")
+    CREATE boy = DeliveryBoy("Bob", "Bike")
+    CREATE order = Order(cust, rest, boy, "Pizza + Coke")
+    CALL order.displayOrder()

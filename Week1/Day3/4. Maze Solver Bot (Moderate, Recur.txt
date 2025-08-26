@@ -1,0 +1,28 @@
+4. Maze Solver Bot (Moderate, Recursion + Backtracking)
+FUNCTION solveMaze(x, y, maze, solution)
+    IF x, y is goal position THEN
+        MARK solution[x][y] = 1
+        RETURN true
+
+    IF x, y is safe to move THEN
+        MARK solution[x][y] = 1
+
+        // Move right
+        IF solveMaze(x, y+1, maze, solution) THEN
+            RETURN true
+
+        // Move down
+        IF solveMaze(x+1, y, maze, solution) THEN
+            RETURN true
+
+        // Backtrack
+        MARK solution[x][y] = 0
+        RETURN false
+
+    RETURN false
+
+MAIN
+    CREATE maze[][] with obstacles
+    CREATE solution[][] same size as maze
+    CALL solveMaze(0,0,maze,solution)
+    PRINT solution
